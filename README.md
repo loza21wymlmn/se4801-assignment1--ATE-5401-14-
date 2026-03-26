@@ -14,3 +14,35 @@
 ### mvn spring-boot:run
 ## Application Configuration
 ### The application is configured using application.properties.
+
+# C2 — Domain Model
+
+### In this stage, the domain model of the application was implemented using JPA and Hibernate.
+
+## Entities created:
+### Category
+
+### Product
+
+### Order
+
+### OrderItem
+
+# Relationships:
+#### - Category -> Product (One-to-Many)
+#### - Order -> OrderItem (One-to-Many with orphanRemoval)
+#### - OrderItem -> Product (Many-to-One)
+
+# Key Features:
+#### Use of @Entity, @Table, and JPA annotations
+
+#### Proper relationship mapping using @ManyToOne and @OneToMany
+
+#### Automatic timestamping using @CreationTimestamp
+
+#### Use of BigDecimal for price handling
+
+#### Enum (OrderStatus) for order state management
+
+# Additional Implementation:
+#### Implemented addItem(Product, int quantity) method in Order class to manage order items

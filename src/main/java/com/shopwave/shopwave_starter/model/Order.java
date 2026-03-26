@@ -32,8 +32,24 @@ public class Order {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-
+    @Builder.Default
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
+
+    public void addItem(Product product, int quantity) {
+        OrderItem item = new OrderItem();
+        item.setProduct(product);
+        item.setQuantity(quantity);
+        item.setOrder(this);
+        item.setUnitPrice(product.getPrice());
+
+        this.items.add(item);
+        BigDecimal itemTotal = item.getUnitPrice()
+                .multiply(BigDecimal.valueOf(quantity));
+
+        this.totalAmount = (this.totalAmount == null)
+                ? itemTotal
+                : this.totalAmount.add(itemTotal);
+    }
 }
 
