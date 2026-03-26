@@ -1,0 +1,21 @@
+// Student Number: ATE/5401/14
+
+package com.shopwave.shopwave_starter.dto;
+
+import lombok.*;
+
+import java.math.BigDecimal;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductDTO {
+
+    private Long id;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Integer stock;
+    private Long categoryId;
+}
