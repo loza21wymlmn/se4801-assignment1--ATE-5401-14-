@@ -46,3 +46,41 @@
 
 # Additional Implementation:
 #### Implemented addItem(Product, int quantity) method in Order class to manage order items
+
+# C3 - Repository and Service
+
+This module handles all product operations: creating, retrieving, searching, and updating products in the ShopWave application.
+
+---
+
+## Key Features
+
+- Create Product: Add new products with name, description, price, stock, and category.
+- Get All Products: Paginated list of products.
+- Get Product by ID: Fetch a product by ID; throws ProductNotFoundException if not found.
+- Search Products: Filter products by name and/or maximum price.
+- Update Stock: Adjust stock up or down; prevents negative stock.
+
+---
+
+## Technical Details
+
+- Repository: ProductRepository extends JpaRepository<Product, Long> with custom queries:
+    - findByCategoryId(Long categoryId)
+    - findByPriceLessThanEqual(BigDecimal maxPrice)
+    - findByNameContainingIgnoreCase(String keyword)
+    - findTopByOrderByPriceDesc()
+
+- Service: ProductService annotated with @Service and @Transactional.
+    - Read-only methods use @Transactional(readOnly = true).
+    - Converts entities to ProductDTO via ProductMapper.
+
+- Exceptions:
+    - ProductNotFoundException for missing products.
+    - IllegalArgumentException if stock would become negative.
+
+---
+
+## Why It Matters
+
+This service keeps all product logic centralized, ensures safe stock handling, and provides clean DTOs for easy use in APIs or frontends.
