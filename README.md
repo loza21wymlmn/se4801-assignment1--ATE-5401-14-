@@ -84,3 +84,45 @@ This module handles all product operations: creating, retrieving, searching, and
 ## Why It Matters
 
 This service keeps all product logic centralized, ensures safe stock handling, and provides clean DTOs for easy use in APIs or frontends.
+
+
+
+# C4– Product REST API (C4)
+
+This module exposes REST endpoints for managing products in ShopWave, including listing, creating, searching, and updating stock.
+
+---
+
+## Endpoints
+
+- GET /api/products – Paginated list of products (`page` & size optional)
+- GET /api/products/{id} – Get a product by ID (404 if not found)
+- POST /api/products – Create a product (`CreateProductRequest` JSON, validated)
+- GET /api/products/search – Search by keyword and/or maxPrice (both optional)
+- PATCH /api/products/{id}/stock – Update stock with { "delta": 5 } (negative allowed, cannot go below 0)
+
+---
+
+## Error Handling
+
+All errors return JSON with:
+
+- timestamp – when the error occurred
+- status – HTTP status code
+- error – short error description
+- message – detailed message
+- path – the requested URI
+
+Handled globally via @RestControllerAdvice:
+
+- ProductNotFoundException → 404 Not Found
+- Validation errors (`@Valid`) → 400 Bad Request
+- Illegal stock updates → 400 Bad Request
+
+---
+
+## Notes
+
+- Uses @RestController, @RequestMapping("/api"), and proper HTTP status codes.
+- ProductService handles all business logic and DTO conversion.
+- Validations ensure safe and consistent API inputs.
