@@ -1,0 +1,19 @@
+[33m9d2283e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m C5: Update tests with ProductRepositoryTest,ProductServiceTest and ProductControllerTest
+[33m91ce206[m C5: Update tests with ProductRepositoryTest,ProductServiceTest and ProductControllerTest
+[33md2fb818[m C5: Update tests with ProductRepositoryTest,ProductServiceTest and ProductControllerTest
+[33med3cad8[m C5: Add ProductServiceTest, ProductControlleTest, ProductRepository Test and update README.md
+[33m4a9f3ac[m C4 updated README.md
+[33m2f965e6[m C4: Added ProductController, DataLoader, GlobalExceptionHandler and updated README.md
+[33mbc300f4[m C3:Added ProductMapper, ProductService, CategoryRepository, update  ProductNotFound and README
+[33m4403d5a[m C3 Added ProductNotFoundException
+[33m7be40c3[m C3: Added ProductDTO, CreatProductRequest and added validation dependency for DTO constraints
+[33m4031447[m C3:Added ProductRepository with derived query methods
+[33m11b8b8e[m Implement C2 domain model(category,product,order,OrderItem),added addItem method with @Builder.Default to order to prevent null issue and updated README
+[33m81d15c5[m C2: Added OrderItem entity linking order and product
+[33m0f9d7a4[m C2: Added OrderStatus enum
+[33m7c941df[m C2 Added product entity JPA mapping and category relationship
+[33m20600a8[m C2: Added category entitiy with JPA and Lombok annotations
+[33m87eed49[m C1 Initial project setup
+[33m76246d3[m Remove all files for fresh push
+[33m9058d7c[m Remove unnecessary files for C1
+[33md6d0485[m C1 Initial project setup with README,pom.xml and src structure

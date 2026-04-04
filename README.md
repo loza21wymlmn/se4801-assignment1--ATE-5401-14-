@@ -154,5 +154,48 @@ This module tests the ProductController endpoints using Spring WebMvcTest and Mo
 
 Run tests using Maven:
 
-```bash
-mvn test
+
+
+
+# Project Summary
+
+This project is a **Spring Boot-based backend application for ShopWave**, developed as part of the SE4801 Enterprise Application Development assignment. It implements a layered architecture with domain modeling, repository and service layers, RESTful APIs, and testing.
+
+The system supports core functionalities such as:
+
+* Product and category management
+* Searching and filtering products
+* Stock updates with validation
+* Order and order item relationships
+* REST API endpoints with proper error handling
+
+The project follows **best practices in Spring Boot**, including DTO mapping, transactional service logic, and structured exception handling.
+
+
+## Testing & Bonus Implementation
+
+The application includes:
+
+* Unit testing using Mockito
+* Controller testing using `@WebMvcTest`
+* Repository testing
+
+For the bonus task, repository tests were enhanced using **Testcontainers with PostgreSQL**, replacing the default in-memory database. This ensures more realistic and isolated test environments.
+
+
+
+## AI Assistance Disclosure
+
+AI tools (such as ChatGPT) were used in a limited and responsible manner during this project. Specifically, AI was used to:
+
+* Assist in understanding and configuring Testcontainers for the bonus task
+* Provide guidance on structuring test classes and resolving minor errors
+* Support Git command usage and debugging during development
+
+All generated suggestions were carefully reviewed, tested, and adapted. The final implementation, design decisions, and validation of functionality were completed independently by the developer.
+
+
+
+## Conclusion
+
+This project demonstrates the development of a **structured, testable, and maintainable Spring Boot backend**, applying enterprise development principles and modern testing practices.
