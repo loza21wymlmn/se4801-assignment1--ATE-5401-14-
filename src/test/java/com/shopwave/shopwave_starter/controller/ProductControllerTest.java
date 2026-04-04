@@ -1,7 +1,6 @@
 // Student Number: ATE/5401/14
 package com.shopwave.shopwave_starter.controller;
 
-
 import com.shopwave.shopwave_starter.dto.ProductDTO;
 import com.shopwave.shopwave_starter.exception.GlobalExceptionHandler;
 import com.shopwave.shopwave_starter.exception.ProductNotFoundException;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageImpl;
@@ -21,6 +21,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -33,7 +34,6 @@ class ProductControllerTest {
 
     @Autowired
     private ProductService productService;
-
 
     private ProductDTO necklaceProduct;
     private ProductDTO carpetProduct;
@@ -60,6 +60,7 @@ class ProductControllerTest {
                 .build();
     }
 
+    @TestConfiguration
     static class TestConfig {
         @Bean
         public ProductService productService() {
@@ -74,14 +75,14 @@ class ProductControllerTest {
 
         mockMvc.perform(get("/api/products"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content[0].name").value("Gold Necklace"))
-                .andExpect(jsonPath("$.content[1].name").value("Persian Carpet"));
+                .andExpect(jsonPath("$[0].name").value("Gold Necklace"))
+                .andExpect(jsonPath("$[1].name").value("Persian Carpet"));
     }
 
     @Test
     void getProductById_notFound_returns404() throws Exception {
         when(productService.getProductById(anyLong()))
-                .thenThrow(new ProductNotFoundException("Product with ID 999 not found."));
+                .thenThrow(new ProductNotFoundException(999L));
 
         mockMvc.perform(get("/api/products/999"))
                 .andExpect(status().isNotFound())

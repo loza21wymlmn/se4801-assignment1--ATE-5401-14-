@@ -126,3 +126,33 @@ Handled globally via @RestControllerAdvice:
 - Uses @RestController, @RequestMapping("/api"), and proper HTTP status codes.
 - ProductService handles all business logic and DTO conversion.
 - Validations ensure safe and consistent API inputs.
+
+
+# C5: ProductController Unit Tests
+
+This module tests the ProductController endpoints using Spring WebMvcTest and MockMvc.
+
+## Features Tested
+
+1. GET /api/products
+  - Returns a list of products.
+  - Verifies product data in JSON response.
+
+2. GET /api/products/{id} (Not Found)
+  - Returns 404 when the product ID does not exist.
+  - Checks that the error message matches GlobalExceptionHandler.
+
+## Implementation Notes
+
+- @WebMvcTest(ProductController.class) loads only the controller layer.
+- @MockBean is used for ProductService to isolate the controller.
+- @Import(GlobalExceptionHandler.class) includes exception handling.
+- MockMvc is used to simulate HTTP requests and verify JSON responses.
+- JSON assertions match the actual output (`List<ProductDTO>`).
+
+## How to Run Tests
+
+Run tests using Maven:
+
+```bash
+mvn test

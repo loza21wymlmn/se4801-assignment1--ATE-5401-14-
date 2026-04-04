@@ -20,6 +20,8 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
+
 class ProductServiceTest {
 
     @Mock
@@ -47,6 +49,8 @@ class ProductServiceTest {
         category.setId(1L);
         category.setName("Jewellery");
     }
+
+
 
     @Test
     void createProduct_success() {
